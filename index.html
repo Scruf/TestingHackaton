@@ -1,0 +1,446 @@
+
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title> Franklin Ave, Brooklyn, ny, USA, Street View, Geographic.org</title>
+
+    <!--STREETVIEW LIBRARIES START-->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIiw8mI-vJWeEAcACbiiP1xz39uuqRR4k&sensor=false&libraries=adsense"></script>
+    <script type="text/javascript">
+        // var map;
+        ///////////////////////////////////////////////////////////////
+        // initialize
+        ///////////////////////////////////////////////////////////////
+        function initialize() {
+
+            var place = getURLParameter("place");
+            if (place == null)
+            {
+                place = "United States, Brooklyn";
+            }
+            //alert("Initialize " + place );
+            var latitude = 0;
+            var longitude = 0;
+            var zoom = 8;
+            var hdg = 34;
+            var pitch = 10;
+            //alert ("Hi place name is " + place);
+
+            geocoder = new google.maps.Geocoder();
+            if (geocoder) {
+                geocoder.geocode( { 'address': place},
+                        function(results, status)
+                        {
+                            if (status == google.maps.GeocoderStatus.OK)
+                            {
+                                if (status != google.maps.GeocoderStatus.ZERO_RESULTS)
+                                {
+                                    ll = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng() );
+                                    if (!ll)
+                                    {
+                                        ll = new google.maps.LatLng(51.5,-0.128);
+                                        alert ('Location not found. Setting location to London, UK');
+                                    }
+
+                                    latitude = results[0].geometry.location.lat();
+                                    longitude = results[0].geometry.location.lng() ;
+
+                                    console.log("Latitude = " + latitude);
+                                    console.log("Longitude = " + longitude);
+
+                                    var location = new google.maps.LatLng(latitude, longitude);
+                                    var mapOptions = {
+                                        center: location,
+                                        zoom: 16
+                                    };
+
+                                    var view = new google.maps.Map(
+                                            document.getElementById("pano"), mapOptions);
+                                    var map = new google.maps.Map(
+                                            document.getElementById("map-canvas"), mapOptions);
+
+                                    var panoramaOptions = {
+                                        position: location,
+                                        pov: {
+                                            heading: 34,
+                                            pitch: 10
+                                        }
+                                    };
+                                    var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
+                                    map.setStreetView(panorama);
+
+                                    var sv = new google.maps.StreetViewService();
+                                    var newpoint=0;
+                                    sv.getPanoramaByLocation(ll, 50, processSVData);
+                                    google.maps.event.addListener(panorama, 'visible_changed', function() {var pll=panorama.getPosition();sv.getPanoramaByLocation(pll,50,adjustdivs);});
+                                    google.maps.event.addListener(map, 'idle', function() {if (newpoint > 0) {var mc=map.getCenter();panorama.setPosition(mc);newpoint=0;} });
+                                }
+                                else
+                                {
+                                    alert("No results found");
+                                }
+                            }
+                            else
+                            {
+                                hideView();
+                                hideMap();
+                            }
+                        }); // function(results, status)
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // processSVData
+        ///////////////////////////////////////////////////////////////
+        function processSVData(data,status)
+        {
+            // Check for no results
+            if (status == "ZERO_RESULTS")
+            {
+                hideView();
+            }
+            else
+            {
+                gotView = true;
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // adjustdivs
+        ///////////////////////////////////////////////////////////////
+        function adjustdivs(data,status)
+        {
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // validateForm
+        ///////////////////////////////////////////////////////////////
+        function validateForm()
+        {
+            var place = document.getElementById("place");
+            if (place.value == 'Enter Address or Place...')
+            {
+                alert("Please enter an address");
+                return(false);
+            }
+            return(true);
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // getURLParameter
+        ///////////////////////////////////////////////////////////////
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // hideView
+        ///////////////////////////////////////////////////////////////
+        function hideView() {
+            document.getElementById("streetview").style.height = "32px";
+            document.getElementById("pano").style.display = "none";
+            document.getElementById("NoStreetView").style.display = "inherit";
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // hideMap
+        ///////////////////////////////////////////////////////////////
+        function hideMap() {
+            document.getElementById("map").style.height = "32px";
+            document.getElementById("map-canvas").style.display = "none";
+            document.getElementById("NoMap").style.display = "inherit";
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <!--STREETVIEW LIBRARIES END-->
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7437757543052749",
+            enable_page_level_ads: true
+        });
+    </script>
+
+</head>
+<body style="margin:0px">
+<style>
+    p {
+        margin: 6px;
+    }
+    .red {
+        color: red;
+        font-family: arial;
+    }
+    form {
+        margin-bottom: 0px;
+    }
+    .img {
+        position: relative; top: 5px; margin: 0px; height: 50px;
+    }
+    .stiles {
+        text-align:center; width:15%
+    }
+    .main {
+        display:nonoe;
+    }
+    .table {
+        margin: 0px;
+        width: auto;
+        border-top: 1px solid #666666;
+        background: rgb(214, 225, 225) url("http://www.geographic.org/street_view/blue.gif");
+    }
+    .logo {
+        background-image: url('http://www.geographic.org/street_view/streetview_banner_long.gif');
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-position: left;
+        margin-top: 4px;
+        height: 44px;
+    }
+    .listmain {
+        margin-left: 0%;
+        margin-right: 0%;
+        background-color: white;
+    }
+    .listspan {
+        padding: 12px;
+    }
+    .inputfind {
+        font-size:90%;
+        width: 237px;
+        height: 29px;
+        margin-left: 13%;
+    }
+    .inputgo {
+        font-size:90%;
+        height: 29px;
+    }
+    ul {
+        font-family: arial;
+    }
+    #streetview {
+        width:70%;
+        height: 550px;
+        float: left;
+    }
+    #map {
+        width:30%;
+        height: 550px;
+        float: left;
+    }
+    #pano {
+        width: 100%;
+        height: 100%;
+    }
+    #map-canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #NoStreetView {
+        padding: 6px;
+        width: 100%;
+        height: 550px;
+        vertical-align:middle;
+        font-size:large;
+    }
+    #NoMap {
+        padding: 6px;
+        width: 100%;
+        height: 550px;
+        vertical-align:middle;
+        font-size:large;
+    }
+    .lastdiv {
+        height: 550px;
+        padding: 0px;
+    }
+    @media screen and (max-width: 600px) {
+        @media all and (orientation:portrait) {
+            #streetview {
+                width:100%;
+                height: 300px;
+                margin-bottom: 16px;
+                border-bottom: 1px solid black;
+            }
+            #map {
+                width:100%;
+                height: 300px;
+                border-top: 1px solid black;
+            }
+            #NoStreetView {
+                padding: 6px;
+                width: 100%;
+                height: 0px;
+            }
+            #NoMap {
+                padding: 6px;
+                width: 100%;
+            }
+            .lastdiv {
+                height: 0px;
+                padding: 0px;
+            }
+        }
+        @media all and (orientation:landscape) {
+            .streetview {
+                width:65%;
+                height: 380px;
+            }
+            .map {
+                width:35%;
+                height: 380px;
+            }
+            .lastdiv {
+                height: 380px;
+            }
+        }
+        .notinmobile {
+            display: none;
+        }
+        .stiles {
+            width: 0%;
+        }
+        .logo {
+            background-image: url('http://www.geographic.org/street_view/streetview_banner_long_mobile.gif');
+            background-size: 100% auto;
+        }
+        .listspan {
+            padding: 12px;
+        }
+        .inputfind {
+            width: 85%;
+            height: 29px;
+            margin-left: 0%;
+        }
+        .inputgo {
+            height: 29px;
+            width: 10%;
+        }
+        li {
+            font-size: 115%;
+            margin:6px;
+        }
+    }
+</style>
+<a href="http://www.geographic.org/streetview/"><div class="logo"></div></a>
+<div class="table">
+
+
+    <div style="margin: 0px" >
+        <!--DIAFIMISI 1 RESPONSIVE START-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- StreetView Responsive -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7437757543052749"
+             data-ad-slot="3829211225"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!--DIAFIMII 1 RESPONSIVE END-->
+    </div>
+
+</div>
+<div class="table">
+    <div class="social notinmobile" >
+        <table align="center">
+            <tr>
+                <td>
+                    <!--facebook-->
+                    <iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&app_id=172352646353&amp;href=http://www.geographic.org/streetview/view.php?uni=-3996979%26fid=332%26c=angola&amp;send=false&amp;layout=standard&amp;width=48&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=24" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:48px; height:24px;" allowTransparency="true"></iframe>
+                </td>
+                <td>
+                    <!--google plus-->
+                    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+                    <div id='gbutton'><g:plusone count="false" size="medium"></g:plusone></div>
+                </td>
+                <td>
+                    <!--twitter-->
+                    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <span></span>
+    <center>
+        <div class="red notinmobile">
+            <strong>
+                Move the stickman on the map to see an image of a different location, or use the search box below the image.
+            </strong>
+        </div>
+    </center>
+</div>
+<div class="table lastdiv">
+    <div class="listmain">
+
+        <div id="streetview">
+            <div id="pano"></div>
+            <div id="NoStreetView" style="display: none" >
+                Street View not available for this location
+            </div>
+        </div>
+        <div id="map">
+            <div id="map-canvas" ></div>
+            <div id="NoMap" style="display: none" >
+                Map not available for this location
+            </div>
+        </div>
+
+    </div>
+</div>
+<div style="border-bottom: 1px solid black" class="table">
+    <form onsubmit="return validateForm()" action="view.php">
+        <input type="text" name="place" id="place" class="inputfind" placeholder="Enter Address or Place..." />
+        <input type="submit" class="inputgo" value=" Go " />
+    </form>
+</div>
+<p>
+
+<p>
+    <!--DIAFIMISI 2 RESPONSIVE START-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- StreetView Responsive -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7437757543052749"
+         data-ad-slot="3829211225"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <!--DIAFIMII 2 RESPONSIVE END-->
+</p>
+
+</p>
+<p>
+<hr />
+<font face="arial">
+    <p class="notinmobile" style="margin: 6px">
+        <a href="http://www.geographic.org" target="_blank">HOME</a> | <a href="http://www.theodora.com/wfb/about.html" target="_blank">ABOUT</a> | <a href="http://www.theodora.com/wfb" target="_blank">COUNTRIES</a> | <a href="http://www.photius.com/rankings" target="_blank">COUNTRY RANKINGS</a> | <a href="http://www.geographic.org/geographic_names" target="_blank">Global NAMES</a> | <a href="http://www.theodora.com/wfb/photos" target="_blank">PHOTOS</a> | <a href="http://www.allcountries.org/uscensus/" target="_blank">USA STATISTICS</a> | <a href="http://www.allcountries.org/china_statistics/" target="_blank">CHINA STATS</a> | <a href="http://www.geographic.org/countries/county_codes.html" target="_blank">COUNTRY CODES</a> | <a href="http://www.photius.com/wfb2001/airport_codes.html" target="_blank">AIRPORTS</a> |
+    </p>
+</font>
+<hr class="notinmobile">
+<p class="notinmobile" style="margin: 6px">
+    <img src="http://www.theodora.com/images/bookmark_banner.gif" align="left" style="height: 40px" border="0">
+    <font color="brown"> - Please bookmark this page (add it to your favorites).
+        <br>
+        - If you wish to <b>link</b> to this page, you can do so by referring to the URL address below this line.</font>
+    <br>
+</p>
+<hr class="notinmobile">
+<p class="notinmobile" style="margin: 6px"><font size="2">
+    http://www.geographic.org/streetview/view.php?place= Franklin Ave, Brooklyn, ny, USA            </font>
+</p>
+<p style="margin: 6px">
+    Copyright © 1994 - 2015, <a href="http://www.photius.com">Photius Coutsoukis</a> and <a href="http://www.theodora.com/ita.html">Information Technology Associates</a> (All rights reserved).
+</p>
+</p>
+</body>
+</html>
+
+Process finished with exit code 0
