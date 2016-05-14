@@ -25,17 +25,26 @@ New_York_Counties.filter(function(el){
             var $ = cheerio.load(html);
             $('.listspan').children().each(function(){
                 var data = $(this);
+
                 data.children().next().children().each(function(){
                     var data = $(this);
                     var street = new Street({
                         street_name:data.text(),
-                        
+                        county:el
+                    });
+                    street.save(function(error,street){
+                        if(error)
+                            throw error;
+                        else
+                            console.dir(street);
                     })
-                    console.log(data.attr('href')+"-"+data.text();
+                    // console.log(data.text());
+
                 })
             })
         }
 
     })
 })
+Street.find(function)
 // /html/body/div[3]/div/span/ul

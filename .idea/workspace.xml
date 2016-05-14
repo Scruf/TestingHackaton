@@ -96,8 +96,8 @@
       <file leaf-file-name="Street.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Street.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            <state relative-caret-position="68">
+              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -106,8 +106,8 @@
       <file leaf-file-name="scrape.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scrape.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+            <state relative-caret-position="662">
+              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -141,7 +141,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
+    <option name="x" value="1013" />
+    <option name="y" value="104" />
     <option name="width" value="971" />
     <option name="height" value="1076" />
   </component>
@@ -288,15 +289,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1463243001188</updated>
-      <workItem from="1463243002783" duration="5982000" />
+      <workItem from="1463243002783" duration="7297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5982000" />
+    <option name="totallyTimeSpent" value="7297000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="952" y="0" width="971" height="1076" extended-state="0" />
+    <frame x="1013" y="104" width="971" height="1076" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23819517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -319,6 +320,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -395,16 +401,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Street.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="68">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrape.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        <state relative-caret-position="662">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
           </folding>
