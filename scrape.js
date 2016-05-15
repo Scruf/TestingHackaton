@@ -12,7 +12,7 @@ db.on('error',console.error.bind(console,'connection error'));
 
 var DEFAULT_URL = "http://www.geographic.org/streetview/usa/ny";
 var New_York_Counties = ['brooklyn','bronx'];
-
+var API_KEY = "AIzaSyBla1gvoAUjezKe4YkZJ_WTxHXN-l8xra4"
 
 New_York_Counties.filter(function(el){
 
