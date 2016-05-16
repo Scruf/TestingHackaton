@@ -5,6 +5,7 @@ var request = require('request'),
     cheerio = require('cheerio'),
     mongoose = require('mongoose'),
     Street = require('./Street'),
+    fs = require('fs'),
     mongodbURI = "mongodb://ek5442:NokiaLumia920@ds033875.mongolab.com:33875/movies";
 mongoose.connect(mongodbURI);
 var db = mongoose.connection;
@@ -35,8 +36,7 @@ New_York_Counties.filter(function(el){
                     street.save(function(error,street){
                         if(error)
                             throw error;
-                        else
-                            console.dir(street);
+
                     })
                     // console.log(data.text());
 
@@ -46,5 +46,5 @@ New_York_Counties.filter(function(el){
 
     })
 })
-Street.find(function)
+
 // /html/body/div[3]/div/span/ul
