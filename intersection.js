@@ -27,7 +27,7 @@ var s = fs.createReadStream(file_path)
 
             // process line here and call s.resume() when rdy
             // function below was for logging memory usage
-            console.log(line);
+            console.log(typeof line);
 
             // resume the readstream, possibly from a callback
             s.resume();
