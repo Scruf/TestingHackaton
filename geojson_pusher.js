@@ -20,7 +20,10 @@ fs.readdir('C:/Users/ekozi/Downloads/geojson-master/geojson-master',function(err
             if(err)
                 throw err;
            else{
-              JSON.stringify(data);
+                var coordinate_obj = JSON.parse(data);
+                
+                console.log(coordinate_obj.features)
+
             }
         })
     }
