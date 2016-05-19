@@ -1,11 +1,22 @@
 /**
  * Created by ekozi on 5/14/2016.
  */
-var request = require('request');
-request("http://www.geographic.org/streetview/view.php?place=%20Franklin%20Ave,%20Brooklyn,%20ny,%20USA",function(error,response,body){
-  if(error)
-      throw error;
-    else
-        console.log(body)
-})
+var fs = require('fs');
+var mongoose = require('mongoose');
+    
 
+
+fs.readFile('new_york.json',function(err,data){
+    if (err)
+        throw err;
+    else{
+        var obj = JSON.parse(data);
+       obj.features.filter(function(el){
+            el.geometry.rings.filter(function(el){
+                el.filter(function(el){
+                    console.log(el);
+                })
+            });
+       })
+    }
+});
